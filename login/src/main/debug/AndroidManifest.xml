@@ -12,7 +12,7 @@
         android:required="false" />
 
     <application
-        android:name="com.mufeng.mvvm.base.BaseApp"
+        android:name="com.mufeng.mvvmlib.base.BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/login_app_name"
@@ -27,7 +27,7 @@
             android:name="design_height_in_dp"
             android:value="667" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

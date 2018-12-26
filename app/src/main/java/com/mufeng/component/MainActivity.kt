@@ -1,12 +1,15 @@
 package com.mufeng.component
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.mufeng.component.databinding.ActivityMainBinding
+import com.mufeng.mvvmlib.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainViewModel,ActivityMainBinding>() {
+    override val layoutId: Int
+        get() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun initView() {
+        super.initView()
+        mBinding.vm = mViewModel
     }
+
 }

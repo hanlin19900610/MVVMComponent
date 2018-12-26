@@ -1,1 +1,1 @@
-include ':app', ':mvvmlib', ':login'
+include ':app', ':mvvmlib', ':login', ':main', ':home', ':video', ':message', ':mine'

@@ -9,8 +9,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/login" />
+            <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/message" />
+            <option value="$PROJECT_DIR$/mine" />
             <option value="$PROJECT_DIR$/mvvmlib" />
+            <option value="$PROJECT_DIR$/video" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

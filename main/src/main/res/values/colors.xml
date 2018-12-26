@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_colorPrimary">#0080ff</color>
+    <color name="main_colorPrimaryDark">#0072e5</color>
+    <color name="main_colorAccent">#D81B60</color>
+    <color name="main_tab_gb">#bbb</color>
+</resources>

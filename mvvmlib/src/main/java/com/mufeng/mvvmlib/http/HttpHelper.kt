@@ -1,6 +1,6 @@
 package com.mufeng.mvvmlib.http
 
-import com.mufeng.mvvmlib.util.gson.CustomizeGsonConverterFactory
+import com.mufeng.mvvmlib.gson.CustomizeGsonConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

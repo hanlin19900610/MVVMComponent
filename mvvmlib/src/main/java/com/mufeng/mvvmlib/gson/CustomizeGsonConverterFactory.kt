@@ -3,8 +3,6 @@ package com.mufeng.mvvmlib.gson
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.mufeng.mvvmlib.util.gson.CustomizeGsonRequestBodyConverter
-import com.mufeng.mvvmlib.util.gson.CustomizeGsonResponseBodyConverter
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Converter
