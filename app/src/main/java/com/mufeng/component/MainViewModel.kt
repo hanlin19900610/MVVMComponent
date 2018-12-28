@@ -8,11 +8,11 @@ import com.mufeng.mvvmlib.ext.io_main_completable
 import io.reactivex.Completable
 import java.util.concurrent.TimeUnit
 
-class MainViewModel : BaseViewModel(){
+class MainViewModel : BaseViewModel() {
 
-    override fun onResume(lifecycleOwner: LifecycleOwner) {
-        super.onResume(lifecycleOwner)
-        Completable.timer(3,TimeUnit.SECONDS)
+    override fun onCreate(lifecycleOwner: LifecycleOwner) {
+        super.onCreate(lifecycleOwner)
+        Completable.timer(3, TimeUnit.SECONDS)
             .compose(io_main_completable())
             .bindLifecycle(this)
             .subscribe {
@@ -25,6 +25,7 @@ class MainViewModel : BaseViewModel(){
                                 .setActionName("showMainActivity")
                                 .build()
                                 .callAsync()
+                            finish()
                         }
                     }
             }

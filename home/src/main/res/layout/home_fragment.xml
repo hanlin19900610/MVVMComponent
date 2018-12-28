@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -13,11 +14,34 @@
         android:orientation="vertical">
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            bind_smart_refresh_listener="@{vm.refreshCommand}"
+            bind_smart_load_more_listener="@{vm.loadMoreCommand}"
+            bind_smart_hasMoreData="@{vm.hasMoreDataStatus}"
+            bind_smart_finishLoadMore="@{vm.finishLoadMoreStatus}"
+            bind_smart_finishRefresh="@{vm.finishRefreshStatus}"
+            bind_smart_autoRefresh="@{vm.autoRefreshStatus}"
             >
 
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{vm.adapter}"
+                app:itemBinding="@{vm.itemBindClass}"
+                app:items="@{vm.headerFooterItems}"
+                app:viewHolder="@{vm.viewHolder}"
+                />
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

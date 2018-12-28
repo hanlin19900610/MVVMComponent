@@ -29,8 +29,6 @@ class MainActivity : BaseActivity<MainViewModel,MainActivityBinding>() {
         mBinding.viewPager.offscreenPageLimit = 4
         mBinding.bbl.setViewPager(mBinding.viewPager)
         mBinding.bbl.setSmoothScroll(true)
-
-
     }
 
 }
