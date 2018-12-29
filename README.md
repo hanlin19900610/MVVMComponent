@@ -42,6 +42,42 @@
 #### 一. 创建宿主项目
 这一步和普通的项目创建方式一样,
 > File-> New-> NewProject
+修改build.gradle文件
+```
+ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
+apply from: rootProject.file('mufeng-cc-settings.gradle')
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.compileVersion
+    defaultConfig {
+        applicationId "com.mufeng.mufengdiary"
+        minSdkVersion rootProject.minVersion
+        targetSdkVersion rootProject.compileVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+```
 #### 二. 创建基础库组件
 在项目中是基于MVVM设计模式 + Databinding + Kotlin 以及一些常用的基础库来封装
 #### 三. 引入CC组件化创建Module模板
@@ -52,8 +88,10 @@
 此模板的使用方法:
 
 1. 下载此模板文件
-2. 解压文件到目录: E:\android-studio\plugins\android\lib\templates\gradle-projects中
+2. 解压文件到目录: \android-studio\plugins\android\lib\templates\gradle-projects中
 3. 重启AndroidStudio
+
+> 注: 此创建模板同学们也可以自行修改,修改完成后,一定要重启才能生效
 
 好! 模板插件安装成功
 
@@ -73,7 +111,7 @@ dependencies {
 ![image](https://github.com/hanlin19900610/MVVMComponent/blob/master/screen/create_module2.gif?raw=true)
 
 
-#### 至此实现了组件化开发
+#### 至此实现了简单吗组件化开发
 源码地址: https://github.com/hanlin19900610/MVVMComponent
 
 #### 项目中用到的技术知识
@@ -96,4 +134,5 @@ dependencies {
 
 #### 感谢
 - https://github.com/luckybilly/CC
-
+- [MVVM-Rhine: MVVM+Jetpack的Github客户端](https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fqingmei2%2FMVVM-Rhine)
+- [goldze / MVVMHabit](https://github.com/goldze/MVVMHabit)
