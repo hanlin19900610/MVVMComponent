@@ -1,69 +1,36 @@
 package com.mufeng.mvvmlib.binding
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.databinding.BindingAdapter
-import com.jakewharton.rxbinding3.view.clicks
-import com.jakewharton.rxbinding3.view.longClicks
-import io.reactivex.functions.Consumer
-import java.util.concurrent.TimeUnit
-
-interface ViewClickCommand : Consumer<View>
-
-const val DEFAULT_THROTTLE_TIME = 500L
 
 /**
- * [View]是否可见
- *
- * @param visible 值为true时可见
+ * @创建者 MuFeng-T
+ * @创建时间 2019/10/16 21:50
+ * @描述
  */
-@BindingAdapter("bind_visibility")
-fun setVisible(view: View, visible: Boolean) {
-    view.visibility = if (visible) View.VISIBLE else View.GONE
+
+//防重复点击间隔(毫秒)
+val CLICK_INTERVAL = 500
+
+/**
+ * 点击事件， 可以处理防抖动 需要后期处理
+ * @receiver View
+ * @param bindingCommand BindingCommand
+ */
+@BindingAdapter("onClickCommand")
+fun View.onClickCommand(bindingCommand: BindingCommand){
+
 }
 
 /**
- * [View]长按事件
- *
- * @param consumer 事件消费者
+ * 长按点击事件
+ * @receiver View
+ * @param bindingCommand BindingCommand
  */
-@SuppressLint("CheckResult")
-@BindingAdapter("bind_onLongClick")
-fun setOnLongClickEvent(view: View, consumer: ViewClickCommand) {
-    view.longClicks()
-        .subscribe { consumer.accept(view) }
-}
-
-
-/**
- * [View]防抖动点击事件
- *
- * @param consumer 点击事件消费者
- * @param time 防抖动时间间隔，单位ms
- */
-@SuppressLint("CheckResult")
-@BindingAdapter("bind_onClick", "bind_throttleFirst", requireAll = false)
-fun setOnClickEvent(view: View, consumer: ViewClickCommand, time: Long?) {
-    view.clicks()
-        .throttleFirst(time ?: DEFAULT_THROTTLE_TIME, TimeUnit.MILLISECONDS)
-        .subscribe { consumer.accept(view) }
-}
-
-/**
- * [View]被点击时,关闭输入框
- *
- * @param closed 当值为true时，启动该功能
- */
-@SuppressLint("CheckResult")
-@BindingAdapter("bind_onClick_closeSoftInput")
-fun closeSoftInputWhenClick(view: View, closed: Boolean = false) {
-    view.clicks()
-        .subscribe {
-            if (closed) {
-                val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(view.windowToken, 0)
-            }
-        }
+@BindingAdapter("onLongClickCommand")
+fun View.onLongClickCommand(bindingCommand: BindingCommand) {
+    setOnLongClickListener {
+        bindingCommand.apply()
+        true
+    }
 }

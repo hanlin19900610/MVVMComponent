@@ -1,1 +1,3 @@
-include ':app', ':mvvmlib', ':login', ':main', ':home', ':video', ':message', ':mine'
+include ':app', ':mvvmlib'
+include ':main-module'
+include ':home_module'

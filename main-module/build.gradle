@@ -1,0 +1,47 @@
+//apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings-2.gradle'
+//修改CC框架代码进行本地测试时使用下面的文件
+apply from: rootProject.file('mufeng-cc-settings.gradle')
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileVersion
+    buildToolsVersion rootProject.buildVersion
+
+    defaultConfig {
+        if (project.ext.runAsApp) {
+            applicationId 'com.mufeng.mainmodule'
+        }
+        minSdkVersion rootProject.minVersion
+        targetSdkVersion rootProject.compileVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    resourcePrefix "main_"
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

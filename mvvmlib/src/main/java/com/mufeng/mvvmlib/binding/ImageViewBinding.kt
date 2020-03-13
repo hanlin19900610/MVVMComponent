@@ -2,29 +2,27 @@ package com.mufeng.mvvmlib.binding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.request.RequestOptions
-import com.mufeng.mvvmlib.glide.GlideApp
+import com.bumptech.glide.Glide
+import com.mufeng.mvvmlib.R
 
 /**
- *
- * 1.普通图片加载
- * 2.圆形图片加载
- * 3.圆角图片加载
- *
- * @param imageView ImageView
- * @param url String?
+ * @创建者 MuFeng-T
+ * @创建时间 2019/10/16 21:28
+ * @描述
  */
-@BindingAdapter("bind_imageUrl")
-fun loadImage(imageView: ImageView, url: String?) {
-    GlideApp.with(imageView.context)
-            .load(url)
-            .into(imageView)
-}
 
-@BindingAdapter("bind_imageUrl_circle")
-fun loadImageCircle(imageView: ImageView, url: String?) {
-    GlideApp.with(imageView.context)
-            .load(url)
-            .apply(RequestOptions().circleCrop())
-            .into(imageView)
+/**
+ * Glide 加载图片
+ * @receiver ImageView
+ * @param url String
+ */
+@BindingAdapter("url")
+fun ImageView.setImageUri(url: String?){
+    Glide.with(this)
+        .load(url)
+        .apply {
+            placeholder(R.drawable.loading_animation)
+            error(R.drawable.ic_broken_image)
+        }
+        .into(this)
 }

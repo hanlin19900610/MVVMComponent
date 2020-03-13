@@ -1,9 +1,0 @@
-<resources>
-    <!-- Base application theme. -->
-    <style name="login_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/login_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/login_colorPrimaryDark</item>
-        <item name="colorAccent">@color/login_colorAccent</item>
-    </style>
-</resources>
